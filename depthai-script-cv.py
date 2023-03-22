@@ -88,6 +88,8 @@ while True:
 #         print("INFERENCE TIME IN MS ", 1/t)
 #         print("PREDICTIONS ", preds)
 
+    mean_angle *= (180 / np.pi)
+    
     steer_input = (mean_angle + 85) / 170
     if steer_input < 0:
         steer_input = 0
