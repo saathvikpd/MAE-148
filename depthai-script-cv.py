@@ -4,12 +4,14 @@ import time
 import numpy as np
 from pyvesc import VESC
 
-def steer(angle):
-    # serial port that VESC is connected to. Something like "COM3" for windows and as below for linux/mac
-    serial_port = '/dev/ttyACM0'
+serial_port = '/dev/ttyACM0'
 
-    motor = VESC(serial_port=serial_port)
-    print("Firmware: ", motor.get_firmware_version())
+motor = VESC(serial_port=serial_port)
+print("Firmware: ", motor.get_firmware_version())
+
+def steer(motor, angle):
+    # serial port that VESC is connected to. Something like "COM3" for windows and as below for linux/mac
+    
 
     # sweep servo through full range
 #     for i in range(100):
@@ -87,7 +89,7 @@ if __name__ == '__main__':
 #         print("INFERENCE TIME IN MS ", 1/t)
 #         print("PREDICTIONS ", preds)
        
-        steer(mean_angle)
+        steer(motor, mean_angle)
     
         print('Steering angle:', mean_angle)
         
