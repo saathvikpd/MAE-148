@@ -95,10 +95,9 @@ if __name__ == '__main__':
             steer_input = 0
         if steer_input > 1:
             steer_input = 1
-
+        
         motor.set_servo(steer_input)
         
-    
         print('Steering angle:', mean_angle)
         
 #         cv2.line(frame, (frame.shape[0] // 2, frame.shape[1]), (frame.shape[0] // 2, 0), color = (0, 0, 0), thickness = 1)
