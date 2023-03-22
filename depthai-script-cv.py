@@ -31,9 +31,8 @@ if __name__ == '__main__':
     
     serial_port = '/dev/ttyACM0'
 
-    with VESC(serial_port=serial_port) as motor:
-        print("Firmware: ", motor.get_firmware_version())
-        motor.set_duty_cycle(.02)
+    motor = VESC(serial_port=serial_port)
+    print("Firmware: ", motor.get_firmware_version())
     
     # instantiating an object (rf) with the RoboflowOak module
     rf = RoboflowOak(model="basketball-detection-s1n00", confidence=0.2, overlap=0.05,
