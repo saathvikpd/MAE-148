@@ -9,28 +9,28 @@ serial_port = '/dev/ttyACM0'
 motor = VESC(serial_port=serial_port)
 print("Firmware: ", motor.get_firmware_version())
 
-def steer(motor, angle):
-    # serial port that VESC is connected to. Something like "COM3" for windows and as below for linux/mac
+# def steer(motor, angle):
+#     # serial port that VESC is connected to. Something like "COM3" for windows and as below for linux/mac
     
 
-    # sweep servo through full range
-#     for i in range(100):
-#         time.sleep(0.01)
-#         motor.set_servo(i/100)
-    steer_input = (angle + 85) / 170
-    if steer_input < 0:
-        steer_input = 0
-    if steer_input > 1:
-        steer_input = 1
+#     # sweep servo through full range
+# #     for i in range(100):
+# #         time.sleep(0.01)
+# #         motor.set_servo(i/100)
+#     steer_input = (angle + 85) / 170
+#     if steer_input < 0:
+#         steer_input = 0
+#     if steer_input > 1:
+#         steer_input = 1
         
-    motor.set_servo(steer_input)
+#     motor.set_servo(steer_input)
 
-    # IMPORTANT: YOU MUST STOP THE HEARTBEAT IF IT IS RUNNING BEFORE IT GOES OUT OF SCOPE. Otherwise, it will not
-    #            clean-up properly.
-    motor.stop_heartbeat()
+#     # IMPORTANT: YOU MUST STOP THE HEARTBEAT IF IT IS RUNNING BEFORE IT GOES OUT OF SCOPE. Otherwise, it will not
+#     #            clean-up properly.
+#     motor.stop_heartbeat()
     
-def throttle(rpm):
-    return None
+# def throttle(rpm):
+#     return None
 
 if __name__ == '__main__':
     # instantiating an object (rf) with the RoboflowOak module
@@ -89,7 +89,14 @@ if __name__ == '__main__':
 #         print("INFERENCE TIME IN MS ", 1/t)
 #         print("PREDICTIONS ", preds)
        
-        steer(motor, mean_angle)
+        steer_input = (mean_angle + 85) / 170
+        if steer_input < 0:
+            steer_input = 0
+        if steer_input > 1:
+            steer_input = 1
+
+        motor.set_servo(steer_input)
+        motor.stop_heartbeat()
     
         print('Steering angle:', mean_angle)
         
