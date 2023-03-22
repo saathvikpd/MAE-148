@@ -27,8 +27,6 @@ from pyvesc import VESC
 # def throttle(rpm):
 #     return None
 
-if __name__ == '__main__':
-
 serial_port = '/dev/ttyACM0'
 
 motor = VESC(serial_port=serial_port)
