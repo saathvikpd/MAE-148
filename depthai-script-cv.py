@@ -38,8 +38,6 @@ version="1", api_key="2BobK1pwIsrmsOnyp12s", rgb=True,
 depth=True, device=None, blocking=True)
 # Running our model and displaying the video output with detections
 
-mean_angle = 0
-
 while True:
     t0 = time.time()
     # The rf.detect() function runs the model inference
@@ -68,9 +66,10 @@ while True:
 
     def dist(p1, p2):
         return (((p1[0] - p2[0])**2) + ((p1[1] - p2[1])**2))**0.5
-
+    
+    mean_angle = 0
     if len(preds) >= 1:
-        mean_angle = 0
+        
         for p in preds:
             x = p['x']
             y = p['y']
@@ -85,8 +84,6 @@ while True:
                 angle = -1 * angle 
             mean_angle += angle
         mean_angle = mean_angle / len(preds)
-    else:
-        mean_angle = mean_angle
 
     # timing: for benchmarking purposes
 #         t = time.time()-t0
@@ -103,6 +100,12 @@ while True:
 
     time.sleep(0.01)
     motor.set_servo(steer_input)
+    motor.set_duty_cycle(.02)
+    # run motor and print out rpm for ~2 seconds
+    for i in range(30):
+        time.sleep(0.1)
+        print(motor.get_measurements().rpm)
+    motor.set_rpm(0)
 
     print('Steering angle:', mean_angle)
 
