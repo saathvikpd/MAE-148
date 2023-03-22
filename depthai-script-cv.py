@@ -72,7 +72,7 @@ while True:
             x = p['x']
             y = p['y']
 
-            cv2.line(frame, (frame.shape[0] // 2, frame.shape[1]), (int(x), int(y)), color = (0, 0, 0), thickness = 1)
+#             cv2.line(frame, (frame.shape[0] // 2, frame.shape[1]), (int(x), int(y)), color = (0, 0, 0), thickness = 1)
 
             adj = frame.shape[1] - y
             hyp = dist((x, y), bottom)
