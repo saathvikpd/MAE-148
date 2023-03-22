@@ -2,6 +2,7 @@ from roboflowoak import RoboflowOak
 import cv2
 import time
 import numpy as np
+from PyVESC.pyvesc.examples.vesc_control import steer
 
 if __name__ == '__main__':
     # instantiating an object (rf) with the RoboflowOak module
@@ -56,22 +57,24 @@ if __name__ == '__main__':
             mean_angle = mean_angle / len(preds)
         
         # timing: for benchmarking purposes
-        t = time.time()-t0
-        print("INFERENCE TIME IN MS ", 1/t)
-        print("PREDICTIONS ", preds)
+#         t = time.time()-t0
+#         print("INFERENCE TIME IN MS ", 1/t)
+#         print("PREDICTIONS ", preds)
+       
+        steer(mean_angle)
+    
+        print('Steering angle:', mean_angle)
         
-        print(mean_angle)
+#         cv2.line(frame, (frame.shape[0] // 2, frame.shape[1]), (frame.shape[0] // 2, 0), color = (0, 0, 0), thickness = 1)
         
-        cv2.line(frame, (frame.shape[0] // 2, frame.shape[1]), (frame.shape[0] // 2, 0), color = (0, 0, 0), thickness = 1)
+#         cv2.putText(frame, str(mean_angle * 180 / np.pi) + " degrees", org = (0, 25), color = (0, 0, 0), fontFace = cv2.FONT_HERSHEY_DUPLEX, fontScale = 0.7, thickness = 1)
         
-        cv2.putText(frame, str(mean_angle * 180 / np.pi) + " degrees", org = (0, 25), color = (0, 0, 0), fontFace = cv2.FONT_HERSHEY_DUPLEX, fontScale = 0.7, thickness = 1)
-        
-        # setting parameters for depth calculation
-        max_depth = np.amax(depth)
-        cv2.imshow("depth", depth/max_depth)
-        # displaying the video feed as successive frames
-        cv2.imshow("frame", frame)
+#         # setting parameters for depth calculation
+#         max_depth = np.amax(depth)
+#         cv2.imshow("depth", depth/max_depth)
+#         # displaying the video feed as successive frames
+#         cv2.imshow("frame", frame)
 
-        # how to close the OAK inference window / stop inference: CTRL+q or CTRL+c
+#         # how to close the OAK inference window / stop inference: CTRL+q or CTRL+c
         if cv2.waitKey(1) == ord('q'):
             break
