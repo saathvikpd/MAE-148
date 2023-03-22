@@ -95,14 +95,16 @@ while True:
 
     #     time.sleep(0.01)
         motor.set_servo(steer_input)
-#     motor.set_duty_cycle(.02)
+        
+         motor.set_rpm(200)
+        for i in range(30):
+            time.sleep(0.1)
+#             print(motor.get_measurements().rpm)
+        motor.set_rpm(0)
+#         motor.set_duty_cycle(.02)
     # run motor and print out rpm for ~2 seconds
     
-#     motor.set_rpm(200)
-#     for i in range(30):
-#         time.sleep(0.1)
-#         print(motor.get_measurements().rpm)
-#     motor.set_rpm(0)
+   
 
     print('Steering angle:', mean_angle)
 
