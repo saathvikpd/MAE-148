@@ -31,8 +31,9 @@ if __name__ == '__main__':
     
     serial_port = '/dev/ttyACM0'
 
-    motor = VESC(serial_port=serial_port)
-    print("Firmware: ", motor.get_firmware_version())
+    with VESC(serial_port=serial_port) as motor:
+        print("Firmware: ", motor.get_firmware_version())
+        motor.set_duty_cycle(.02)
     
     # instantiating an object (rf) with the RoboflowOak module
     rf = RoboflowOak(model="basketball-detection-s1n00", confidence=0.2, overlap=0.05,
@@ -97,7 +98,7 @@ if __name__ == '__main__':
             steer_input = 1
 
         motor.set_servo(steer_input)
-        motor.stop_heartbeat()
+        
     
         print('Steering angle:', mean_angle)
         
@@ -114,3 +115,4 @@ if __name__ == '__main__':
 #         # how to close the OAK inference window / stop inference: CTRL+q or CTRL+c
         if cv2.waitKey(1) == ord('q'):
             break
+            motor.stop_heartbeat()
