@@ -96,7 +96,7 @@ while True:
     #     time.sleep(0.01)
         motor.set_servo(steer_input)
         
-         motor.set_rpm(200)
+        motor.set_rpm(500)
         for i in range(30):
             time.sleep(0.1)
 #             print(motor.get_measurements().rpm)
