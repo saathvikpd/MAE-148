@@ -2,7 +2,7 @@ from roboflowoak import RoboflowOak
 import cv2
 import time
 import numpy as np
-from PyVESC.pyvesc.examples.vesc_control import steer
+from vesc_control import steer
 
 if __name__ == '__main__':
     # instantiating an object (rf) with the RoboflowOak module
