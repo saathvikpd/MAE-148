@@ -96,6 +96,7 @@ if __name__ == '__main__':
         if steer_input > 1:
             steer_input = 1
         
+        time.sleep(0.01)
         motor.set_servo(steer_input)
         
         print('Steering angle:', mean_angle)
