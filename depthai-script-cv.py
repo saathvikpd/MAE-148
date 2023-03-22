@@ -112,5 +112,5 @@ while True:
 #         # how to close the OAK inference window / stop inference: CTRL+q or CTRL+c
     if cv2.waitKey(1) == ord('q'):
         break
-        
-    motor.stop_heartbeat()
+
+motor.stop_heartbeat()
