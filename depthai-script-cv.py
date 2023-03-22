@@ -4,11 +4,6 @@ import time
 import numpy as np
 from pyvesc import VESC
 
-serial_port = '/dev/ttyACM0'
-
-motor = VESC(serial_port=serial_port)
-print("Firmware: ", motor.get_firmware_version())
-
 # def steer(motor, angle):
 #     # serial port that VESC is connected to. Something like "COM3" for windows and as below for linux/mac
     
@@ -33,6 +28,12 @@ print("Firmware: ", motor.get_firmware_version())
 #     return None
 
 if __name__ == '__main__':
+    
+    serial_port = '/dev/ttyACM0'
+
+    motor = VESC(serial_port=serial_port)
+    print("Firmware: ", motor.get_firmware_version())
+    
     # instantiating an object (rf) with the RoboflowOak module
     rf = RoboflowOak(model="basketball-detection-s1n00", confidence=0.2, overlap=0.05,
     version="1", api_key="2BobK1pwIsrmsOnyp12s", rgb=True,
