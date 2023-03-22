@@ -84,22 +84,17 @@ while True:
                 angle = -1 * angle 
             mean_angle += angle
         mean_angle = mean_angle / len(preds)
-
-    # timing: for benchmarking purposes
-#         t = time.time()-t0
-#         print("INFERENCE TIME IN MS ", 1/t)
-#         print("PREDICTIONS ", preds)
-
-    mean_angle *= (180 / np.pi)
+        
+        mean_angle *= (180 / np.pi)
     
-    steer_input = (mean_angle + 85) / 170
-    if steer_input < 0:
-        steer_input = 0
-    if steer_input > 1:
-        steer_input = 1
+        steer_input = (mean_angle + 85) / 170
+        if steer_input < 0:
+            steer_input = 0
+        if steer_input > 1:
+            steer_input = 1
 
-#     time.sleep(0.01)
-    motor.set_servo(steer_input)
+    #     time.sleep(0.01)
+        motor.set_servo(steer_input)
 #     motor.set_duty_cycle(.02)
     # run motor and print out rpm for ~2 seconds
     
@@ -110,6 +105,13 @@ while True:
 #     motor.set_rpm(0)
 
     print('Steering angle:', mean_angle)
+
+    # timing: for benchmarking purposes
+#         t = time.time()-t0
+#         print("INFERENCE TIME IN MS ", 1/t)
+#         print("PREDICTIONS ", preds)
+
+    
 
 #         cv2.line(frame, (frame.shape[0] // 2, frame.shape[1]), (frame.shape[0] // 2, 0), color = (0, 0, 0), thickness = 1)
 
