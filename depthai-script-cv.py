@@ -72,8 +72,9 @@ for _ in range(1000):
         return (((p1[0] - p2[0])**2) + ((p1[1] - p2[1])**2))**0.5
     
     mean_angle = 0
+    
+    break_ = False
     if len(preds) >= 1:
-        
         for p in preds:
             x = p['x']
             y = p['y']
@@ -87,6 +88,13 @@ for _ in range(1000):
             if x < bottom[0]:
                 angle = -1 * angle 
             mean_angle += angle
+        
+        pred_size = preds[0]['width'] * preds[0]['height']
+        frame_size = frame.shape[0] * frame.shape[1]
+        
+        if (pred_size / frame_size) >= 0.3:
+            break_ = True
+        
         mean_angle = mean_angle / len(preds)
         
         mean_angle *= (180 / np.pi)
@@ -134,7 +142,8 @@ for _ in range(1000):
             temp_var = 0
         except:
             print('retrying')
-        
+    if break_:
+        break
 #     os.system("$S")
 #     motor = VESC(serial_port=serial_port)
         
@@ -147,6 +156,7 @@ for _ in range(1000):
 #         motor.set_rpm(0)
 #         
     # run motor and print out rpm for ~2 seconds
+    
     
    
 
