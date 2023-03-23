@@ -27,6 +27,9 @@ from pyvesc import VESC
 # def throttle(rpm):
 #     return None
 
+serial_port = '/dev/ttyACM0'
+
+motor = VESC(serial_port=serial_port)
 
 # instantiating an object (rf) with the RoboflowOak module
 rf = RoboflowOak(model="basketball-detection-s1n00", confidence=0.2, overlap=0.05,
@@ -92,9 +95,7 @@ while True:
             steer_input = 1
             
             
-        serial_port = '/dev/ttyACM0'
-
-        motor = VESC(serial_port=serial_port)
+        
         #print("Firmware: ", motor.get_firmware_version())
 
     #     time.sleep(0.01)
@@ -104,7 +105,7 @@ while True:
         for i in range(30):
             time.sleep(0.1)
             print(motor.get_measurements().rpm)
-        motor.set_rpm(0)
+#         motor.set_rpm(0)
 #         
     # run motor and print out rpm for ~2 seconds
     
