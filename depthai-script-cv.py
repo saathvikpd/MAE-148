@@ -38,6 +38,8 @@ version="1", api_key="2BobK1pwIsrmsOnyp12s", rgb=True,
 depth=True, device=None, blocking=True)
 # Running our model and displaying the video output with detections
 
+#motor.set_duty_cycle(.02)
+
 while True:
     t0 = time.time()
     # The rf.detect() function runs the model inference
@@ -96,7 +98,7 @@ while True:
     #     time.sleep(0.01)
         motor.set_servo(steer_input)
         
-        motor.set_duty_cycle(.02)
+        
         for i in range(30):
             time.sleep(0.1)
             print(motor.get_measurements().rpm)
