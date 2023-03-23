@@ -103,18 +103,23 @@ for _ in range(1000):
 
     #     time.sleep(0.01)
    
-        os.system("$S")
-        
-        motor = VESC(serial_port=serial_port)
-
-        motor.set_duty_cycle(.02)
+       
+        motor.set_duty_cycle(0.1)
 
         motor.set_servo(steer_input)
         # run motor and print out rpm for ~2 seconds
-        for i in range(30):
+        for i in range(5):
             time.sleep(0.1)
-            print(motor.get_measurements().rpm)
-        motor.set_rpm(0)
+            try:
+                print(motor.get_measurements().rpm)
+            except:
+                os.system("$S")
+                motor = VESC(serial_port=serial_port)
+                break
+        try:
+            motor.set_rpm(0)
+        except:
+            continue
         
 #         motor.set_duty_cycle(
 #         motor.set_rpm(100)
