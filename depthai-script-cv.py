@@ -101,8 +101,17 @@ while True:
     #     time.sleep(0.01)
         motor.set_servo(steer_input)
         
+        with motor as motor_new:
+            motor_new.set_duty_cycle(.02)
+
+            # run motor and print out rpm for ~2 seconds
+            for i in range(30):
+                time.sleep(0.1)
+                print(motor_new.get_measurements().rpm)
+            motor_new.set_rpm(0)
+        
 #         motor.set_duty_cycle(
-        motor.set_rpm(100)
+#         motor.set_rpm(100)
 #         print(motor.get_rpm())
 #         for i in range(30):
 #             time.sleep(0.1)
