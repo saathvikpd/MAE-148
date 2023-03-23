@@ -118,8 +118,9 @@ for _ in range(1000):
             motor.set_rpm(0)
         except:
             continue
-        os.system("$S")
-        motor = VESC(serial_port=serial_port)
+         
+    os.system("$S")
+    motor = VESC(serial_port=serial_port)
         
 #         motor.set_duty_cycle(
 #         motor.set_rpm(100)
