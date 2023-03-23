@@ -30,7 +30,7 @@ from pyvesc import VESC
 serial_port = '/dev/ttyACM0'
 
 motor = VESC(serial_port=serial_port)
-print('success')
+print('motor detect')
 
 # instantiating an object (rf) with the RoboflowOak module
 rf = RoboflowOak(model="basketball-detection-s1n00", confidence=0.2, overlap=0.05,
@@ -39,11 +39,9 @@ depth=True, device=None, blocking=True)
 # Running our model and displaying the video output with detections
 
 # motor.set_duty_cycle(.)
-print('hello')
+print('model loaded')
 for _ in range(1000):
-    
     t0 = time.time()
-    print(t0)
     # The rf.detect() function runs the model inference
     result, frame, raw_frame, depth = rf.detect()
     predictions = result["predictions"]
@@ -103,7 +101,6 @@ for _ in range(1000):
 
     #     time.sleep(0.01)
         motor = VESC(serial_port=serial_port)
-        print('success')
 
         motor.set_duty_cycle(.02)
 
