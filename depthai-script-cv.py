@@ -94,7 +94,7 @@ for _ in range(1000):
         
         print('rel pred size', pred_size / frame_size)
         
-        if (pred_size / frame_size) >= 0.3:
+        if (pred_size / frame_size) >= 0.4:
             break_ = True
         
         mean_angle = mean_angle / len(preds)
@@ -113,7 +113,7 @@ for _ in range(1000):
 
     #     time.sleep(0.01)
    
-        motor.set_duty_cycle(0.02)
+        motor.set_duty_cycle(0.04)
 
         motor.set_servo(steer_input)
         # run motor and print out rpm for ~2 seconds
