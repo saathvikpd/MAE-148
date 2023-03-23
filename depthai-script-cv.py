@@ -109,6 +109,7 @@ for _ in range(1000):
         motor.set_servo(steer_input)
         # run motor and print out rpm for ~2 seconds
         for i in range(5):
+            time.sleep(0.1)
             try:
                 print(motor.get_measurements().rpm)
             except:
