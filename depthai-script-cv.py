@@ -99,11 +99,13 @@ while True:
         #print("Firmware: ", motor.get_firmware_version())
 
     #     time.sleep(0.01)
-        motor.set_servo(steer_input)
-        
         with VESC(serial_port=serial_port) as motor:
+            print('success')
+            
             motor.set_duty_cycle(.02)
-
+            
+            motor.set_servo(steer_input)
+            
             # run motor and print out rpm for ~2 seconds
             for i in range(30):
                 time.sleep(0.1)
