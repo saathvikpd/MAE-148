@@ -39,7 +39,7 @@ depth=True, device=None, blocking=True)
 # Running our model and displaying the video output with detections
 
 # motor.set_duty_cycle(.)
-
+print('hello')
 while True:
     
     t0 = time.time()
