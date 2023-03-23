@@ -103,8 +103,7 @@ for _ in range(1000):
 
     #     time.sleep(0.01)
    
-       
-        
+        motor.set_duty_cycle(0.02)
 
         motor.set_servo(steer_input)
         # run motor and print out rpm for ~2 seconds
@@ -161,3 +160,5 @@ for _ in range(1000):
 #         break
 
 motor.stop_heartbeat()
+
+
