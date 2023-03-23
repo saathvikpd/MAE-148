@@ -116,6 +116,8 @@ for _ in range(1000):
                 motor = VESC(serial_port=serial_port)
                 motor.set_duty_cycle(0.02)
                 print(motor.get_measurements().rpm)
+        os.system("$S")
+        motor = VESC(serial_port=serial_port)
         try:
             motor.set_rpm(0)
         except:
