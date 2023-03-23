@@ -4,3 +4,7 @@ The run.py file, when run, will load our model (hosted on an API using RoboFlow)
 
 The 148remote/ folder has some code for our camera mount. The camera mount is controlled using an arduino board. Th script in that file gets the mount to do a cool head nod and also allows remote control of the camera's angle.
 
+Team 6:
+Saathvik Dirisala
+Victor Chen
+Yang Song
