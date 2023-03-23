@@ -109,13 +109,16 @@ for _ in range(1000):
         # run motor and print out rpm for ~2 seconds
         for i in range(5):
             time.sleep(0.1)
-            try:
-                print(motor.get_measurements().rpm)
-            except:
-                os.system("$S")
-                motor = VESC(serial_port=serial_port)
-                motor.set_duty_cycle(0.02)
-                print('except', motor.get_measurements().rpm)
+            
+            temp_var = None
+            while temp_var == None:        
+                try:
+                    print(motor.get_measurements().rpm)
+                    os.system("$S")
+                    motor = VESC(serial_port=serial_port)
+                    temp_var = 0
+                except:
+                    print('retrying')
         try:
             motor.set_rpm(0)
         except:
