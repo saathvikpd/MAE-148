@@ -89,8 +89,8 @@ for _ in range(1000):
                 angle = -1 * angle 
             mean_angle += angle
         
-        pred_size = preds[0]['width'] * preds[0]['height']
-        frame_size = frame.shape[0] * frame.shape[1]
+        pred_size = preds[0]['width']
+        frame_size = frame.shape[0]
         
         print('rel pred size', pred_size / frame_size)
         
