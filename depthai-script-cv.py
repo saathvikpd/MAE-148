@@ -92,6 +92,8 @@ for _ in range(1000):
         pred_size = preds[0]['width'] * preds[0]['height']
         frame_size = frame.shape[0] * frame.shape[1]
         
+        print('rel pred size', pred_size / frame_size)
+        
         if (pred_size / frame_size) >= 0.3:
             break_ = True
         
