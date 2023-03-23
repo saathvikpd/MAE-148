@@ -42,7 +42,7 @@ depth=True, device=None, blocking=True)
 
 # motor.set_duty_cycle(.)
 print('model loaded')
-for _ in range(1000):
+while True:
     t0 = time.time()
     # The rf.detect() function runs the model inference
     result, frame, raw_frame, depth = rf.detect()
