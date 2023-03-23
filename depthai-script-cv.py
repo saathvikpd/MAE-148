@@ -3,6 +3,8 @@ import cv2
 import time
 import numpy as np
 from pyvesc import VESC
+import subprocess
+import os
 
 # def steer(motor, angle):
 #     # serial port that VESC is connected to. Something like "COM3" for windows and as below for linux/mac
@@ -100,6 +102,9 @@ for _ in range(1000):
         #print("Firmware: ", motor.get_firmware_version())
 
     #     time.sleep(0.01)
+   
+        os.system("$S")
+        
         motor = VESC(serial_port=serial_port)
 
         motor.set_duty_cycle(.02)
@@ -108,7 +113,7 @@ for _ in range(1000):
         # run motor and print out rpm for ~2 seconds
         for i in range(30):
             time.sleep(0.1)
-            motor.set_rpm(300 // (i + 1))
+            print(motor.get_measurements().rpm)
         motor.set_rpm(0)
         
 #         motor.set_duty_cycle(
