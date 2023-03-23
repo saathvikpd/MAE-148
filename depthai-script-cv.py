@@ -34,7 +34,7 @@ version="1", api_key="2BobK1pwIsrmsOnyp12s", rgb=True,
 depth=True, device=None, blocking=True)
 # Running our model and displaying the video output with detections
 
-motor.set_duty_cycle(.)
+# motor.set_duty_cycle(.)
 
 while True:
     t0 = time.time()
