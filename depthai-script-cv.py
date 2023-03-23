@@ -40,7 +40,7 @@ depth=True, device=None, blocking=True)
 
 # motor.set_duty_cycle(.)
 print('hello')
-while True:
+for _ in range(1000):
     
     t0 = time.time()
     print(t0)
