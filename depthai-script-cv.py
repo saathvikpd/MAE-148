@@ -127,7 +127,7 @@ for _ in range(1000):
             os.system("$S")
             motor = VESC(serial_port=serial_port)
             temp_var = 0
-        except AttributeError:
+        except:
             print('retrying')
         
 #     os.system("$S")
