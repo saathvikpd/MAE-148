@@ -120,8 +120,16 @@ for _ in range(1000):
             motor.set_rpm(0)
         except:
             continue
-    os.system("$S")
-    motor = VESC(serial_port=serial_port)
+            
+    temp_var = None
+    while temp_var == None:        
+        try
+            os.system("$S")
+            motor = VESC(serial_port=serial_port)
+            temp_var = 0
+        except AttributeError:
+            print('retrying')
+        
 #     os.system("$S")
 #     motor = VESC(serial_port=serial_port)
         
